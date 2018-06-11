@@ -2,5 +2,6 @@
 #define FUNCTIONS_H_
 
 int mainMenu();
+int newGameMenu();
 
 #endif

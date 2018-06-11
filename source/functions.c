@@ -12,3 +12,15 @@ int mainMenu() {
 	return opt;
 
 }
+
+int newGameMenu() {
+
+	setlocale(LC_ALL, "Rus");
+
+	int opt;
+	printf("\n**************************************\n1. Изучение новых слов\n2. Повторенее изученного\n3. Выход в главное меню\n\nВыберите действие: ");
+	scanf("%d", &opt);
+
+	return opt;
+
+}

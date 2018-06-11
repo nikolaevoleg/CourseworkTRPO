@@ -13,7 +13,20 @@ int main(int argc, char *argv[]) {
 		opt = mainMenu();
 		switch (opt) {
 			case 1:
-				printf("Новая игра\n");
+				opt = newGameMenu();
+				switch (opt) {
+				case 1:
+					printf("Изучение новых слов\n");
+					break;
+				case 2:
+					printf("Повторение изученного\n");
+					break;
+				case 3:
+					break;
+				default:
+					printf("Вариант введен некорректно! Выход в главное меню\n");
+					break;
+				}
 				break;
 			case 2:
 				printf("Текущий прогресс\n");
