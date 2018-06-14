@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <windows.h>
 #include <time.h>
 #include <locale.h>
+#include <string.h>
 #include "functions.h"
 
 void answQue(int fl, char **eng, char **rus, int num) {
@@ -88,11 +88,10 @@ void answQue(int fl, char **eng, char **rus, int num) {
 
 		f = fopen("../source/vocabulary.txt", "w");
 		for (int i = 0; i < num; i++) {
-			if (eng[i] != "0") {
+			if (strcmp(eng[i], "") == 0 ) {
 				fprintf(f, "%s.%s\n", eng[i], rus[i]);
 			}
 		}
-		fprintf(f, "\0");
 		fclose(f);
 	}
 
