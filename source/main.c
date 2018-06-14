@@ -5,9 +5,13 @@
 
 int main(int argc, char *argv[]) {
 
-	int opt;
-
 	setlocale(LC_ALL, "Rus");
+
+	int opt;
+	int num;
+	FILE *f;
+
+	f = fopen("../source/vocabulary.txt", "r");
 
 	while (1) {
 		opt = mainMenu();
@@ -17,6 +21,8 @@ int main(int argc, char *argv[]) {
 				switch (opt) {
 				case 1:
 					printf("Изучение новых слов\n");
+					num = checkWordsNum(f);
+					printf("Количество слов в файле: %d\n", num);
 					break;
 				case 2:
 					printf("Повторение изученного\n");
@@ -32,6 +38,7 @@ int main(int argc, char *argv[]) {
 				printf("Текущий прогресс\n");
 				break;
 			case 3:
+				fclose(f);
 				system("PAUSE");
 				return 0;
 				break;
@@ -39,6 +46,5 @@ int main(int argc, char *argv[]) {
 				printf("Вариант введен некорректно!\n");
 		}
 	}
-
 
 }
