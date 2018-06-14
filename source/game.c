@@ -88,7 +88,7 @@ void answQue(int fl, char **eng, char **rus, int num) {
 
 		f = fopen("../source/vocabulary.txt", "w");
 		for (int i = 0; i < num; i++) {
-			if (strcmp(eng[i], "") == 0 ) {
+			if (strcmp(eng[i], "0") != 0 ) {
 				fprintf(f, "%s.%s\n", eng[i], rus[i]);
 			}
 		}
