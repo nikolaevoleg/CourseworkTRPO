@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 					newGame(1);
 					break;
 				case 2:
-					printf("Повторение изученного\n");
+					newGame(2);
 					break;
 				case 3:
 					break;

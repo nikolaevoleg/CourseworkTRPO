@@ -2,5 +2,6 @@
 #define GAME_H_
 
 void newGame();
+void answQue(int, char **, char **, int);
 
 #endif

@@ -5,35 +5,26 @@
 #include <locale.h>
 #include "functions.h"
 
-void newGame(int fl) {
+void answQue(int fl, char **eng, char **rus, int num) {
 
-	setlocale(LC_ALL, "Rus");
-	srand(time(NULL));
+	if ((fl == 2) && (num < 5)) {
+		printf("Недостаточно слов для теста!\n\n");
+		system("PAUSE");
+		return;
+	}
 
-	int num;
 	FILE *f;
-
-	f = fopen("../source/studied.txt", "a+");
-	num = checkStringsNum(fl);
-
-	char **eng;
-	char **rus;
-	eng = (char**)malloc(num * sizeof(char*));
-	for (int i = 0; i < num; i++) {
-		eng[i] = (char*)malloc(40 * sizeof(char));
-	}
-	rus = (char**)malloc(num * sizeof(char*));
-	for (int i = 0; i < num; i++) {
-		rus[i] = (char*)malloc(40 * sizeof(char));
-	}
-
-	wordsMass(fl, eng, rus, num);
-	
-	system("cls");
 
 	int k;
 	int *ws;
-	printf("Сколько слов хотите выучить (<%d)? ", num+1);
+
+	system("cls");
+	if (fl == 1) {
+		printf("Сколько слов хотите выучить (<%d)? ", num + 1);
+	}
+	else {
+		printf("Сколько слов хотите повторить (<%d)? ", num + 1);
+	}
 	scanf("%d", &k);
 	while ((k < 0) || (k > num)) {
 		printf("Введите еще раз: ");
@@ -42,7 +33,7 @@ void newGame(int fl) {
 	ws = (int*)malloc(k * sizeof(int));
 	for (int i = 0; i < k; i++) {
 		ws[i] = rand() % num;
-		for (int j = i-1; j >= 0; j--) {
+		for (int j = i - 1; j >= 0; j--) {
 			if (ws[i] == ws[j]) {
 				ws[i] = rand() % num;
 				j = i;
@@ -59,6 +50,10 @@ void newGame(int fl) {
 	printf("\n");
 	system("PAUSE");
 
+	if (fl == 1) {
+		f = fopen("../source/studied.txt", "a+");
+	}
+
 	int var[4];
 	int n;
 	int answ;
@@ -67,7 +62,7 @@ void newGame(int fl) {
 		n = rand() % 4;
 		for (int j = 0; j < 4; j++) {
 			var[j] = rand() % num;
-			for (int z = j-1; z >= 4; z--) {
+			for (int z = j - 1; z >= 0; z--) {
 				if ((var[j] == var[z]) || (var[j] == ws[i])) {
 					var[j] = rand() % num;
 					z = j;
@@ -76,27 +71,63 @@ void newGame(int fl) {
 		}
 		var[n] = ws[i];
 		system("cls");
-		printf("%d из %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", i+1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
+		printf("%d из %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
 		printf("Выберите вариант(1-4): ");
 		scanf("%d", &answ);
-		if (answ == n+1) {
-			fprintf(f, "%s.%s\n", eng[ws[i]], rus[ws[i]]);
-			eng[ws[i]] = "0";
+		if (answ == n + 1) {
+			if (fl == 1) {
+				fprintf(f, "%s.%s\n", eng[ws[i]], rus[ws[i]]);
+				eng[ws[i]] = "0";
+			}
 			sum++;
 		}
 	}
-	fclose(f);
 
-	f = fopen("../source/vocabulary.txt", "w");
-	for (int i = 0; i < num; i++) {
-		if (eng[i] != "0") {
-			fprintf(f, "%s.%s\n", eng[i], rus[i]);
+	if (fl == 1) {
+		fclose(f);
+
+		f = fopen("../source/vocabulary.txt", "w");
+		for (int i = 0; i < num; i++) {
+			if (eng[i] != "0") {
+				fprintf(f, "%s.%s\n", eng[i], rus[i]);
+			}
 		}
+		fprintf(f, "\0");
+		fclose(f);
 	}
-	fprintf(f, "\0");
-	fclose(f);
 
 	printf("\nВерных ответов: %d из %d\n\n", sum, k);
+
+	free(ws);
+
+	system("PAUSE");
+	return;
+
+}
+
+void newGame(int fl) {
+
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+
+	int num;
+	
+	num = checkStringsNum(fl);
+
+	char **eng;
+	char **rus;
+	eng = (char**)malloc(num * sizeof(char*));
+	for (int i = 0; i < num; i++) {
+		eng[i] = (char*)malloc(40 * sizeof(char));
+	}
+	rus = (char**)malloc(num * sizeof(char*));
+	for (int i = 0; i < num; i++) {
+		rus[i] = (char*)malloc(40 * sizeof(char));
+	}
+
+	wordsMass(fl, eng, rus, num);
+
+	answQue(fl, eng, rus, num);
 
 	for (int i = 0; i < num; i++) {
 		free(eng[i]);
@@ -107,8 +138,6 @@ void newGame(int fl) {
 		free(rus[i]);
 	}
 	free(rus);
-
-	system("PAUSE");
 
 	return;
 
