@@ -3,7 +3,7 @@
 
 int mainMenu();
 int newGameMenu();
-int checkStringsNum(FILE *);
-void wordsMass(FILE *, char **, char **, int);
+int checkStringsNum(int);
+void wordsMass(int, char **, char **, int);
 
 #endif

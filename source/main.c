@@ -9,10 +9,6 @@ int main(int argc, char *argv[]) {
 	setlocale(LC_ALL, "Rus");
 
 	int opt;
-	int num;
-	FILE *f;
-
-	f = fopen("../source/vocabulary.txt", "r");
 
 	while (1) {
 		opt = mainMenu();
@@ -21,8 +17,7 @@ int main(int argc, char *argv[]) {
 				opt = newGameMenu();
 				switch (opt) {
 				case 1:
-					printf("Изучение новых слов\n");
-					newGame();
+					newGame(1);
 					break;
 				case 2:
 					printf("Повторение изученного\n");
@@ -38,8 +33,6 @@ int main(int argc, char *argv[]) {
 				printf("Текущий прогресс\n");
 				break;
 			case 3:
-				fclose(f);
-				system("PAUSE");
 				return 0;
 				break;
 			default:
