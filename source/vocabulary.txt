@@ -1,0 +1,49 @@
+anchor , якорь
+boolean , булев
+box model , блочная модель
+browser , браузер
+bug , баг
+build , сборка
+by default , по умолчанию
+click , щелчок/щелкнуть
+coding , написание кода
+comment , комментарий
+community , сообщество
+compromised , взломанный
+content , контент
+control , panel панель управления
+debug , отладка
+details,  подробности
+developer,  разработчик
+elastic layout,  вёрстка
+engine,  движок
+feature ,  возможность/функциональная особенность
+floating point , плавающая запятая
+hardware , оборудование
+icon , значок
+implementation , реализация
+laptop , ноутбук
+liquid , резиновый макет
+line , строка
+list , список
+lock , блокировать
+logo , логотип
+native support , встроенная поддержка
+paragraph , абзац
+performance , быстродействие
+presentation , language язык представления
+profile , профиль
+programmer , программист
+registry , реестр
+restart , перезапуск
+router , маршрутизатор
+statement , выражение
+status bar , строка состояния
+style property , стилевое свойство
+tab (browser) , вкладка
+tag , тег
+tag (sloud serv) , метка
+typography , типографика
+update , обновление
+usability , юзабилити
+website , сайт
