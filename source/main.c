@@ -25,12 +25,15 @@ int main(int argc, char *argv[]) {
 				case 3:
 					break;
 				default:
+					system("cls");
 					printf("Вариант введен некорректно! Выход в главное меню\n");
 					break;
 				}
 				break;
 			case 2:
-				printf("Текущий прогресс\n");
+				system("cls");
+				printf("Текущий прогресс:\nВыучено слов: %d из %d\n\n", checkStringsNum(2), checkStringsNum(1)+ checkStringsNum(2));
+				system("PAUSE");
 				break;
 			case 3:
 				return 0;

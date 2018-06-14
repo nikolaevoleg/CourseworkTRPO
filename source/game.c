@@ -7,7 +7,7 @@
 
 void answQue(int fl, char **eng, char **rus, int num) {
 
-	if ((fl == 2) && (num < 5)) {
+	if (num < 5) {
 		printf("Недостаточно слов для теста!\n\n");
 		system("PAUSE");
 		return;
@@ -26,8 +26,8 @@ void answQue(int fl, char **eng, char **rus, int num) {
 		printf("Сколько слов хотите повторить (<%d)? ", num + 1);
 	}
 	scanf("%d", &k);
-	while ((k < 0) || (k > num)) {
-		printf("Введите еще раз: ");
+	while ((k < 1) || (k > num)) {
+		printf("Введите еще раз (0>k>%d): ", num + 1);
 		scanf("%d", &k);
 	}
 	ws = (int*)malloc(k * sizeof(int));
