@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
+#include "game.h"
 #include "functions.h"
 
 int main(int argc, char *argv[]) {
@@ -21,8 +22,7 @@ int main(int argc, char *argv[]) {
 				switch (opt) {
 				case 1:
 					printf("Изучение новых слов\n");
-					num = checkWordsNum(f);
-					printf("Количество слов в файле: %d\n", num);
+					newGame();
 					break;
 				case 2:
 					printf("Повторение изученного\n");
