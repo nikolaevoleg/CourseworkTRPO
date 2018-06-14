@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
 
@@ -23,4 +24,16 @@ int newGameMenu() {
 
 	return opt;
 
+}
+
+int checkWordsNum(FILE *f) {
+	char ch;
+	int num = 0;
+	while (!feof(f)) {
+		ch = getc(f);
+		if (ch == '\n') {
+			num++;
+		}
+	}
+	return num;
 }

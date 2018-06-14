@@ -3,5 +3,6 @@
 
 int mainMenu();
 int newGameMenu();
+int checkWordsNum(FILE *);
 
 #endif
