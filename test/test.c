@@ -1,19 +1,19 @@
 #define CTEST_MAIN
 
 #include <stdbool.h>
-#include <ctest.h>
+#include "../thirdparty/ctest.h"
 #include <string.h>
-#include "functions.h"
-#include "game.h"
+#include "../source/functions.h"
+#include "../source/game.h"
 
 CTEST(INPUT_VALIDATION, FINE_INPUT)
 {
-	
-	
-	int opt = 2;
-	
-	bool result = mainMenu(opt) ;
-	ASSERT_TRUE(result);
+	char ch = 'a';
+	bool result = dotcheck(ch);
+	ASSERT_FALSE(result);
 }
 
-
+int main(int argc, const char** argv) 
+{ 
+return ctest_main(argc, argv); 
+}
