@@ -9,7 +9,7 @@ test: build/test.o build/functions.o bin
 build/test.o: test/test.c build
 	gcc -Wall -Werror -I thirdparty -I source -c test/test.c -o build/test.o
 
-build/main.o: source/main.c
+build/main.o: source/main.c build
 	gcc -std=c99 -Wall -Werror -c source/main.c -o build/main.o
 
 build/functions.o: source/functions.c
