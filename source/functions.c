@@ -1,5 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+bool dotcheck(char ch)
+{
+    if (ch == '.')
+        return true;
+    else
+        return false;
+}
 
 int mainMenu() {
 
@@ -40,7 +50,7 @@ int checkStringsNum(int fl) {
 
 	while (!feof(f)) {
 		ch = getc(f);
-		if (ch == '.') {
+		if (dotcheck(ch) == true) {
 			num++;
 		}
 	}
