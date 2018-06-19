@@ -4,10 +4,10 @@ program: build/main.o build/functions.o build/game.o bin
 	gcc -Wall -Werror build/main.o build/functions.o build/game.o -o bin/program
 
 test: build/test.o build/functions.o bin
-	gcc -Wall -Werror build/test.o build/functions.o -o bin/test
+	gcc  -Wall -Werror build/test.o build/functions.o -o bin/test
 
 build/test.o: test/test.c
-	gcc -Wall -Werror -I thirdparty -I source -c test/test.c -o build/test.o
+	gcc -std=c99 -Wall -Werror -I thirdparty -I source -c test/test.c -o build/test.o
 
 build/main.o: source/main.c build
 	gcc -std=c99 -Wall -Werror -c source/main.c -o build/main.o
