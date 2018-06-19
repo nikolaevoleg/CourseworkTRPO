@@ -1,5 +1,6 @@
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_
+#include <stdbool.h>
 
 int mainMenu();
 int newGameMenu();
