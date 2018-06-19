@@ -1,15 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <locale.h>
 #include <string.h>
 #include "functions.h"
 
 void answQue(int fl, char **eng, char **rus, int num) {
 
 	if (num < 5) {
-		printf("Недостаточно слов для теста!\n\n");
-		system("PAUSE");
+		printf("Not enough words to test!\n\n");
+		
 		return;
 	}
 
@@ -18,16 +17,16 @@ void answQue(int fl, char **eng, char **rus, int num) {
 	int k;
 	int *ws;
 
-	system("cls");
+	printf("\n*****************************************\n");
 	if (fl == 1) {
-		printf("Сколько слов хотите выучить (<%d)? ", num + 1);
+		printf("How many words do you want to learn (<%d)? ", num + 1);
 	}
 	else {
-		printf("Сколько слов хотите повторить (<%d)? ", num + 1);
+		printf("How many words do you want to repeat (<%d)? ", num + 1);
 	}
 	scanf("%d", &k);
 	while ((k < 1) || (k > num)) {
-		printf("Введите еще раз (0>k>%d): ", num + 1);
+		printf("Enter again (0>k>%d): ", num + 1);
 		scanf("%d", &k);
 	}
 	ws = (int*)malloc(k * sizeof(int));
@@ -41,14 +40,13 @@ void answQue(int fl, char **eng, char **rus, int num) {
 		}
 	}
 
-	system("cls");
+	printf("\n*****************************************\n");
 
-	printf("Ознакомьтесь со словами:\n\n");
+	printf("Read the words:\n\n");
 	for (int i = 0; i < k; i++) {
 		printf("%s - %s\n", eng[ws[i]], rus[ws[i]]);
 	}
 	printf("\n");
-	system("PAUSE");
 
 	if (fl == 1) {
 		f = fopen("../source/studied.txt", "a+");
@@ -70,9 +68,9 @@ void answQue(int fl, char **eng, char **rus, int num) {
 			}
 		}
 		var[n] = ws[i];
-		system("cls");
-		printf("%d из %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
-		printf("Выберите вариант(1-4): ");
+		printf("\n*****************************************\n");
+		printf("%d out of %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
+		printf("Select option(1-4): ");
 		scanf("%d", &answ);
 		if (answ == n + 1) {
 			if (fl == 1) {
@@ -85,7 +83,6 @@ void answQue(int fl, char **eng, char **rus, int num) {
 
 	if (fl == 1) {
 		fclose(f);
-
 		f = fopen("../source/vocabulary.txt", "w");
 		for (int i = 0; i < num; i++) {
 			if (strcmp(eng[i], "0") != 0 ) {
@@ -95,18 +92,17 @@ void answQue(int fl, char **eng, char **rus, int num) {
 		fclose(f);
 	}
 
-	printf("\nВерных ответов: %d из %d\n\n", sum, k);
+	printf("\nCorect answers: %d out of %d\n\n", sum, k);
 
 	free(ws);
 
-	system("PAUSE");
+	
 	return;
 
 }
 
 void newGame(int fl) {
 
-	setlocale(LC_ALL, "Rus");
 	srand(time(NULL));
 
 	int num;
