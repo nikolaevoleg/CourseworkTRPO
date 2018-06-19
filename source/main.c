@@ -1,12 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <locale.h>
 #include "game.h"
 #include "functions.h"
 
 int main(int argc, char *argv[]) {
-
-	setlocale(LC_ALL, "Rus");
 
 	int opt;
 
@@ -25,21 +22,20 @@ int main(int argc, char *argv[]) {
 				case 3:
 					break;
 				default:
-					system("cls");
-					printf("Вариант введен некорректно! Выход в главное меню\n");
+					printf("\n*****************************************\n");
+					printf("You have entered invalid data. Please try again.\n");
 					break;
 				}
 				break;
 			case 2:
-				system("cls");
-				printf("Текущий прогресс:\nВыучено слов: %d из %d\n\n", checkStringsNum(2), checkStringsNum(1)+ checkStringsNum(2));
-				system("PAUSE");
+				printf("\n*****************************************\n");
+				printf("Current progress.\nLearned %d words out of %d\n\n", checkStringsNum(2), checkStringsNum(1)+ checkStringsNum(2));
 				break;
 			case 3:
 				return 0;
 				break;
 			default:
-				printf("Вариант введен некорректно!\n");
+				printf("You have entered invalid data. Please try again.\n");
 		}
 	}
 

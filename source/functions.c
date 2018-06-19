@@ -1,15 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <locale.h>
 
 int mainMenu() {
-	
-	setlocale(LC_ALL, "Rus");
 
-	system("cls");
+	printf("\n*****************************************\n");
 
 	int opt;
-	printf("1. Новая игра\n2. Текущий прогресс\n3. Выход\n\nВыберите действие: ");
+	printf("1. New game\n2. Current progress\n3. Exit\n\nSelect an action: ");
 	scanf("%d", &opt);
 
 	return opt;
@@ -18,12 +15,10 @@ int mainMenu() {
 
 int newGameMenu() {
 
-	setlocale(LC_ALL, "Rus");
-
-	system("cls");
+	printf("\n*****************************************\n");
 
 	int opt;
-	printf("1. Изучение новых слов\n2. Повторенее изученного\n3. Выход в главное меню\n\nВыберите действие: ");
+	printf("1. Learn new words\n2. Repeat the words\n3. Return to the main menu\n\nSelect an action: ");
 	scanf("%d", &opt);
 
 	return opt;
