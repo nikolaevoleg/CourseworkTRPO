@@ -1,4 +1,4 @@
-all: program
+all: program test
 
 program: build/main.o build/functions.o build/game.o bin 
 	gcc -Wall -Werror build/main.o build/functions.o build/game.o -o bin/program

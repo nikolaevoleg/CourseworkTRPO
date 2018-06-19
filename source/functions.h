@@ -5,5 +5,6 @@ int mainMenu();
 int newGameMenu();
 int checkStringsNum(int);
 void wordsMass(int, char **, char **, int);
+bool dotcheck(char);
 
 #endif

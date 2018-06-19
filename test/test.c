@@ -15,5 +15,9 @@ CTEST(INPUT_VALIDATION, FINE_INPUT)
 
 int main(int argc, const char** argv) 
 { 
-return ctest_main(argc, argv); 
+
+	return ctest_main(argc, argv); 
+
 }
+
+
