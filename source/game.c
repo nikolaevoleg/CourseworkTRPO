@@ -69,13 +69,14 @@ void answQue(int fl, char **eng, char **rus, int num) {
 		}
 		var[n] = ws[i];
 		printf("\n*****************************************\n");
-		printf("%d out of %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
+		printf("%d out of %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", 
+			    i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
 		printf("Select option(1-4): ");
 		scanf("%d", &answ);
 		if (answ == n + 1) {
 			if (fl == 1) {
 				fprintf(f, "%s.%s\n", eng[ws[i]], rus[ws[i]]);
-				eng[ws[i]] = "0";
+				strcpy(eng[ws[i]], "0");
 			}
 			sum++;
 		}
