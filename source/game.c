@@ -6,7 +6,7 @@
 
 void answQue(int fl, char **eng, char **rus, int num) {
 
-	if (num < 5) {
+	if (num < 4) {
 		printf("Not enough words to test!\n\n");
 		
 		return;
@@ -24,11 +24,12 @@ void answQue(int fl, char **eng, char **rus, int num) {
 	else {
 		printf("How many words do you want to repeat (<%d)? ", num + 1);
 	}
-	scanf("%d", &k);
-	while ((k < 1) || (k > num)) {
-		printf("Enter again (0>k>%d): ", num + 1);
-		scanf("%d", &k);
+
+	while (((scanf("%d", &k)) != 1) || (k < 1) || (k > num)) {
+		printf("Invalid input format or invalid number entered. Try again: ");
+		while(getchar() != '\n');
 	}
+	printf("%d\n", k);
 	ws = (int*)malloc(k * sizeof(int));
 	for (int i = 0; i < k; i++) {
 		ws[i] = rand() % num;
@@ -58,21 +59,39 @@ void answQue(int fl, char **eng, char **rus, int num) {
 	int sum = 0;
 	for (int i = 0; i < k; i++) {
 		n = rand() % 4;
+		var[n] = ws[i];
+		printf("Vern - %d\n", var[n]);
 		for (int j = 0; j < 4; j++) {
-			var[j] = rand() % num;
-			for (int z = j - 1; z >= 0; z--) {
-				if ((var[j] == var[z]) || (var[j] == ws[i])) {
-					var[j] = rand() % num;
-					z = j;
-				}
+			if (j != n) { 
+				var[j] = rand() % num;
+				printf("%d - %d\n", j, var[j]);
+				if (j == 0){
+					while (var[j] == var[n]){
+						var[j] = rand() % num;
+						printf("%d - %d\n", j, var[j]);
+					}
+				} 
+				else {
+					for (int z = j - 1; z >= 0; z--) {
+						if ((var[j] == var[z]) || (var[j] == var[n])) {
+							var[j] = rand() % num;
+							printf("%d - %d\n", j, var[j]);
+							z = j;
+						}
+					}
+				}	
 			}
 		}
-		var[n] = ws[i];
 		printf("\n*****************************************\n");
 		printf("%d out of %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", 
 			    i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
 		printf("Select option(1-4): ");
-		scanf("%d", &answ);
+
+		while (((scanf("%d", &answ)) != 1) || (answ < 1) || (answ > 4)) {
+			printf("Invalid input format or invalid number entered. Try again: ");
+			while(getchar() != '\n');
+		}
+
 		if (answ == n + 1) {
 			if (fl == 1) {
 				fprintf(f, "%s.%s\n", eng[ws[i]], rus[ws[i]]);
