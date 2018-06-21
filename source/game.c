@@ -29,7 +29,6 @@ void answQue(int fl, char **eng, char **rus, int num) {
 		printf("Invalid input format or invalid number entered. Try again: ");
 		while(getchar() != '\n');
 	}
-	printf("%d\n", k);
 	ws = (int*)malloc(k * sizeof(int));
 	for (int i = 0; i < k; i++) {
 		ws[i] = rand() % num;
@@ -57,31 +56,30 @@ void answQue(int fl, char **eng, char **rus, int num) {
 	int n;
 	int answ;
 	int sum = 0;
+
 	for (int i = 0; i < k; i++) {
 		n = rand() % 4;
 		var[n] = ws[i];
-		printf("Vern - %d\n", var[n]);
+
 		for (int j = 0; j < 4; j++) {
 			if (j != n) { 
 				var[j] = rand() % num;
-				printf("%d - %d\n", j, var[j]);
 				if (j == 0){
 					while (var[j] == var[n]){
 						var[j] = rand() % num;
-						printf("%d - %d\n", j, var[j]);
 					}
 				} 
 				else {
 					for (int z = j - 1; z >= 0; z--) {
 						if ((var[j] == var[z]) || (var[j] == var[n])) {
 							var[j] = rand() % num;
-							printf("%d - %d\n", j, var[j]);
 							z = j;
 						}
 					}
 				}	
 			}
 		}
+
 		printf("\n*****************************************\n");
 		printf("%d out of %d\n\n%s:\n1: %s\n2: %s\n3: %s\n4: %s\n\n", 
 			    i + 1, k, eng[ws[i]], rus[var[0]], rus[var[1]], rus[var[2]], rus[var[3]]);
@@ -99,6 +97,7 @@ void answQue(int fl, char **eng, char **rus, int num) {
 			}
 			sum++;
 		}
+
 	}
 
 	if (fl == 1) {

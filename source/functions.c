@@ -85,8 +85,10 @@ void wordsMass(int fl, char **eng, char **rus, int num) {
 		symb = 0;
 		ch = getc(f);
 		while (ch != '.' && (!feof(f))) {
-			eng[i][symb] = ch;
-			symb++;
+			if (symb < 39){
+				eng[i][symb] = ch;
+				symb++;
+			}
 			ch = getc(f);
 		}
 		eng[i][symb] = '\0';
@@ -94,12 +96,13 @@ void wordsMass(int fl, char **eng, char **rus, int num) {
 		symb = 0;
 		ch = getc(f);
 		while ((ch != '\n') && (!feof(f))) {
-			rus[i][symb] = ch;
-			symb++;
+			if (symb < 39) {
+				rus[i][symb] = ch;
+				symb++;
+			}
 			ch = getc(f);
 		}
 		rus[i][symb] = '\0';
-		printf("%s - %s\n", eng[i], rus[i]);
 
 	}
 
