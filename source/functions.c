@@ -17,7 +17,10 @@ int mainMenu() {
 
 	int opt;
 	printf("1. New game\n2. Current progress\n3. Exit\n\nSelect an action: ");
-	scanf("%d", &opt);
+	while (((scanf("%d", &opt)) != 1) || (opt < 1) || (opt > 3)) {
+		printf("Invalid input format or invalid number entered. Try again: ");
+		while(getchar() != '\n');
+	}
 
 	return opt;
 
@@ -29,7 +32,11 @@ int newGameMenu() {
 
 	int opt;
 	printf("1. Learn new words\n2. Repeat the words\n3. Return to the main menu\n\nSelect an action: ");
-	scanf("%d", &opt);
+	while (((scanf("%d", &opt)) != 1) || (opt < 1) || (opt > 3)) {
+		printf("Invalid input format or invalid number entered. Try again: ");
+		while(getchar() != '\n');
+	}
+
 
 	return opt;
 
@@ -48,8 +55,7 @@ int checkStringsNum(int fl) {
 	char ch;
 	int num = 0;
 
-	while (!feof(f)) {
-		ch = getc(f);
+	while ((ch = getc(f)) != EOF) {
 		if (dotcheck(ch) == true) {
 			num++;
 		}
@@ -79,8 +85,10 @@ void wordsMass(int fl, char **eng, char **rus, int num) {
 		symb = 0;
 		ch = getc(f);
 		while (ch != '.' && (!feof(f))) {
-			eng[i][symb] = ch;
-			symb++;
+			if (symb < 39){
+				eng[i][symb] = ch;
+				symb++;
+			}
 			ch = getc(f);
 		}
 		eng[i][symb] = '\0';
@@ -88,8 +96,10 @@ void wordsMass(int fl, char **eng, char **rus, int num) {
 		symb = 0;
 		ch = getc(f);
 		while ((ch != '\n') && (!feof(f))) {
-			rus[i][symb] = ch;
-			symb++;
+			if (symb < 39) {
+				rus[i][symb] = ch;
+				symb++;
+			}
 			ch = getc(f);
 		}
 		rus[i][symb] = '\0';
