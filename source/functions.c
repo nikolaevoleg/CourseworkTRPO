@@ -48,8 +48,7 @@ int checkStringsNum(int fl) {
 	char ch;
 	int num = 0;
 
-	while (!feof(f)) {
-		ch = getc(f);
+	while ((ch = getc(f)) != EOF) {
 		if (dotcheck(ch) == true) {
 			num++;
 		}
